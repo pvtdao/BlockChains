@@ -3,7 +3,7 @@
 Install dependencies package
 
 ```bash
-npm init
+npm install
 # or
 yarn install
 ```
