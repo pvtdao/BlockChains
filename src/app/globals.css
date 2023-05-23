@@ -2,26 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: "SVN-Poppins-500";
+  src: url("../asset/font-poppins/Poppins-SemiBold.otf") format("opentype");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@font-face {
+  font-family: "SVN-Poppins-400";
+  src: url("../asset/font-poppins/Poppins-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SVN-Poppins-600";
+  src: url("../asset/font-poppins/Poppins-Bold.otf") format("opentype");
+}
+
+* {
+  font-family: "SVN-Poppins-400";
+}
+
+.search {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 0.65rem auto;
+}
+
+.loading-spinner {
+  position: relative;
+}
+
+.loading-spinner:before {
+  @apply animate-spin;
+  content: '';
+  animation-duration: 1s;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-color: rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.9) rgba(0, 0, 0, 0.9) rgba(0, 0, 0, 0.08);
+}
+
+@layer components {
+  .menu-mobile {
+    @apply bg-white w-full top-[-290px] lg:top-[-50px] -z-10;
+    transition: top .3s linear 0s;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .menu-mobile.active {
+    top: 100%;
+    border-top: .5px solid rgba(0, 0, 0, 0.08);
+    transition: top .3s linear 0s;
+
+  }
 }
